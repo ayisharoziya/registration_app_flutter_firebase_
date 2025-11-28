@@ -70,7 +70,7 @@ class _LogginState extends State<Loggin> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              TextField(
+              TextField(obscureText:true ,
                 controller: passwordcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(

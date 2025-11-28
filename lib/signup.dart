@@ -95,7 +95,7 @@ class _SignupState extends State<Signup> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              TextField(
+              TextField(obscureText: true,
                 controller: passwordcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -121,7 +121,7 @@ class _SignupState extends State<Signup> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              TextField(
+              TextField(obscureText: true,
                 controller: confirmpassword,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
