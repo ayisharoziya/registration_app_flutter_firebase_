@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:registration_app_flutter/Service.dart';
 import 'package:registration_app_flutter/forgot.dart';
 import 'package:registration_app_flutter/signup.dart';
 
 
-class Loggin extends StatelessWidget {
+class Loggin extends StatefulWidget {
   const Loggin({super.key});
 
+  @override
+  State<Loggin> createState() => _LogginState();
+}
+
+class _LogginState extends State<Loggin> {
+  TextEditingController emailcontroller=TextEditingController();
+  TextEditingController passwordcontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +45,7 @@ class Loggin extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              TextField(
+              TextField(controller: emailcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -62,7 +70,7 @@ class Loggin extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              TextField(
+              TextField(controller: passwordcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -91,10 +99,7 @@ class Loggin extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Loggin()),
-                    );
+                    loggin(Email: emailcontroller.text, password: passwordcontroller.text, context: context);
                   },
                   child: Text(
                     "Login",

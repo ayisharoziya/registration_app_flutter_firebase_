@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:registration_app_flutter/Loggin.dart';
+import 'package:registration_app_flutter/Service.dart';
 
-
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
   const Signup({super.key});
+
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  TextEditingController usernamecontroller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController confirmpassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +48,7 @@ class Signup extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: usernamecontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -63,6 +74,7 @@ class Signup extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: emailcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -84,6 +96,7 @@ class Signup extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: passwordcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -109,6 +122,7 @@ class Signup extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: confirmpassword,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -128,7 +142,15 @@ class Signup extends StatelessWidget {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    register(
+                      username: usernamecontroller.text,
+                      Email: emailcontroller.text,
+                      password: passwordcontroller.text,
+                      confirmpassword: confirmpassword.text,
+                      context: context,
+                    );
+                  },
                   child: Text(
                     "Sign up",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -140,16 +162,23 @@ class Signup extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Aldready have an account?  "),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Loggin(),));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Loggin()),
+                      );
                     },
-                    child: Text("Login", style: TextStyle(fontWeight: FontWeight.bold))),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
               ),
             ],
