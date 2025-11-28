@@ -42,6 +42,7 @@ Future<void> forgot({
   try {
   
   await FirebaseAuth.instance.sendPasswordResetEmail(email: Email);
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("check your inbox")));
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
   }
